@@ -5,9 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModeTrain"
+    android:background="#EBEBEB"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    tools:context=".ModeTrain">
 
     <ViewFlipper
         android:id="@+id/vfFlashcard"
@@ -22,51 +23,161 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/round_edges"
-            android:backgroundTint="@color/trainingAccent">
-
-            <TextView
-                android:id="@+id/tvQuote"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:padding="32dp"
-                android:textSize="19sp"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@drawable/round_edges"
             android:backgroundTint="@color/white"
             android:foreground="@drawable/round_edges_border"
             android:foregroundTint="@color/trainingAccent"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="TextView"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingHorizontal="24dp"
+                android:text="TextView"
                 android:textSize="30sp"
-                android:gravity="center"/>
+                app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/tvAuthor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:gravity="center"
                 android:text="TextView"
-                android:gravity="center" />
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/clTags"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:constraint_referenced_ids="textView2,textView3,tvTheme"
+                    app:flow_horizontalGap="10dp"
+                    app:flow_maxElementsWrap="3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_edges"
+                    android:backgroundTint="@color/pastel_yellow"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="@string/style_SYMBOLISM" />
+
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_edges"
+                    android:backgroundTint="@color/pastel_blue"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="елегия" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_edges"
+            android:backgroundTint="@color/trainingAccent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvQuote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="32dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
         </LinearLayout>
+
     </ViewFlipper>
+
+    <ImageView
+        android:id="@+id/btnView"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_edges"
+        android:backgroundTint="@color/white"
+        android:padding="16dp"
+        android:src="@drawable/closed_eye"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/btnCorrect"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnWrong"
+        app:layout_constraintTop_toBottomOf="@+id/vfFlashcard" />
+
+    <ImageView
+        android:id="@+id/btnWrong"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_edges"
+        android:backgroundTint="@color/white"
+        android:padding="16dp"
+        android:src="@drawable/thumbs_down"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/btnView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnView" />
+
+    <ImageView
+        android:id="@+id/btnCorrect"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_edges"
+        android:backgroundTint="@color/white"
+        android:padding="16dp"
+        android:src="@drawable/thumbs_up"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnView"
+        app:layout_constraintTop_toTopOf="@+id/btnView" />
+
+    <View
+        android:id="@+id/btnWrongHide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.3"
+        android:background="@drawable/round_edges"
+        app:layout_constraintBottom_toBottomOf="@+id/btnWrong"
+        app:layout_constraintEnd_toEndOf="@+id/btnWrong"
+        app:layout_constraintStart_toStartOf="@+id/btnWrong"
+        app:layout_constraintTop_toTopOf="@+id/btnWrong" />
 </androidx.constraintlayout.widget.ConstraintLayout>

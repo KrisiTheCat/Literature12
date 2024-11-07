@@ -5,6 +5,7 @@ public class Product {
     private String authorName;
     private ProductGenre genre;
     private ProductStyle style;
+    private ProductTheme theme;
     private String text;
 
     public String getTitle() {
@@ -25,5 +26,13 @@ public class Product {
 
     public String getText() {
         return text;
+    }
+
+    public ProductTheme getTheme() {
+        return theme;
+    }
+
+    public void setTheme(ProductTheme theme) {
+        this.theme = theme;
     }
 }

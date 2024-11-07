@@ -25,12 +25,14 @@ public class ProductsManager {
         JSONArray all = null;
         try {
             all = new JSONArray(loadJSONFromAsset("HOPE"));
-            products.put(ProductTheme.HOPE, readThemeLevels(all));
+            products.put(ProductTheme.HOPE, readThemeLevels(all, ProductTheme.HOPE));
+            all = new JSONArray(loadJSONFromAsset("LOVE"));
+            products.put(ProductTheme.LOVE, readThemeLevels(all, ProductTheme.LOVE));
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
-    static ArrayList<Product> readThemeLevels(JSONArray obj) throws JSONException {
+    static ArrayList<Product> readThemeLevels(JSONArray obj, ProductTheme theme) throws JSONException {
         ArrayList<Product> currLevels = new ArrayList<>();
         Log.d(TAG, "readThemeLevels: " + obj);
         for (int i = 0; i < obj.length(); i++) {
@@ -38,6 +40,7 @@ public class ProductsManager {
             Log.d(TAG, "readThemeLevels: " + jo_inside);
             String myJson= jo_inside.toString();
             Product prod = new Gson().fromJson(myJson, Product.class);
+            prod.setTheme(theme);
             currLevels.add(prod);
         }
         return currLevels;

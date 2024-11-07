@@ -3,4 +3,16 @@
 
     <string name="mode_train">Тренировка</string>
     <string name="mode_test">Изпит</string>
+
+    <string name="style_EXPRESSIONISM">експресионизъм</string>
+    <string name="style_REALISM">реализъм</string>
+    <string name="style_DIABOLISM">диаболизъм</string>
+    <string name="style_ROMANTISM">романтизъм</string>
+    <string name="style_MODERNISM">модернизъм</string>
+    <string name="style_SYMBOLISM">символизъм</string>
+    <string name="style_INDIVIDUALISM">индивидуализъм</string>
+    <string name="style_EST_INDIVIDUALISM">ест. индивидуализъм</string>
+
+    <string name="theme_LOVE">Любовта</string>
+    <string name="theme_HOPE">Вярата и надеждата</string>
 </resources>

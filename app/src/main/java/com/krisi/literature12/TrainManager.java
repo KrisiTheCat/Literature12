@@ -1,5 +1,6 @@
 package com.krisi.literature12;
 
+import android.util.Log;
 import android.util.Pair;
 
 import com.krisi.literature12.products.Product;
@@ -12,21 +13,39 @@ import java.util.Random;
 
 public class TrainManager {
 
-    private static final int QUESTIONS_COUNT = 2;
+    private static final int QUESTIONS_COUNT = 10;
+    private static final String TAG = "TRAIN_M";
     public static ArrayList<Pair<String, Product>> trainCards = new ArrayList<>();
-    private static final Random random = new Random();
+    private static Random random = new Random();
 
     TrainManager(){
 
     }
 
     public static void initTrainingSession(){
+        random = new Random();
         for(int i = 0; i < QUESTIONS_COUNT; i++){
             ProductTheme theme = ProductTheme.randomTheme();
+            Log.d(TAG, "initTrainingSession: "+ProductsManager.productCount(theme));
             int id = random.nextInt(ProductsManager.productCount(theme));
             Product product = ProductsManager.getProduct(theme, id);
             trainCards.add(new Pair<>(getRandomQuote(product.getText()), product));
         }
+    }
+
+    public static Pair<String, Product> getCardInfo(){
+        if(trainCards.isEmpty()) return null;
+        return trainCards.get(0);
+    }
+
+    public static void correctAnswer(){
+        trainCards.remove(0);
+    }
+    public static void wrongAnswer(){
+        int newId = random.nextInt(trainCards.size()/2)+trainCards.size()/2;
+        Log.d(TAG, "wrongAnswer: added on new id=" + newId);
+        trainCards.add(newId, trainCards.get(0));
+        trainCards.remove(0);
     }
 
     public static String getRandomQuote(String text){

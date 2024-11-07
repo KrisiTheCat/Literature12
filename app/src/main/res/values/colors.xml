@@ -3,5 +3,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="trainingAccent">#6886C5</color>
+    <color name="trainingAccent">#162B57</color>
+
+    <color name="pastel_yellow">#F6CF71</color>
+    <color name="pastel_orange">#F89C74</color>
+    <color name="pastel_red">#FE8E88</color>
+    <color name="pastel_pink">#FE88B1</color>
+    <color name="pastel_green">#87C55F</color>
+    <color name="pastel_blue">#9EBAF3</color>
+    <color name="pastel_purple">#DDB0F2</color>
+    <color name="pastel_brown">#D6AA6D</color>
+    <color name="pastel_turquoise">#66C5CC</color>
+    <color name="pastel_greenish">#8BE0A4</color>
+    <color name="pastel_gray">#B3B3B3</color>
 </resources>

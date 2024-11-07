@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Literature12.Tag">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/round_edges</item>
+        <item name="android:paddingHorizontal" tools:ignore="NewApi">10dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">5dp</item>
+    </style>
+
+    <style name="Theme.Literature12.Theme.Love" parent="Theme.Literature12.Tag">
+        <item name="android:backgroundTint">@color/pastel_pink</item>
+        <item name="android:text">@string/theme_LOVE</item>
+    </style>
+    <style name="Theme.Literature12.Theme.Hope" parent="Theme.Literature12.Tag">
+        <item name="android:backgroundTint">@color/pastel_blue</item>
+        <item name="android:text">@string/theme_HOPE</item>
+    </style>
+</resources>

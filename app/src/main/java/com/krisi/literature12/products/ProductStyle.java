@@ -5,5 +5,8 @@ public enum ProductStyle {
     INDIVIDUALISM,
     EST_INDIVIDUALISM,
     SYMBOLISM,
+    REALISM,
+    DIABOLISM,
+    ROMANTISM,
     EXPRESSIONISM
 }

@@ -104,8 +104,6 @@ public class AnimationFactory {
 
         centerX = fromView.getWidth() / 2.0f;
         centerY = fromView.getHeight() / 2.0f;
-        System.out.println(centerX);
-        System.out.println(centerY);
 
         FlipAnimation outFlip= new FlipAnimation(dir.getStartDegreeForFirstView(), dir.getEndDegreeForFirstView(), centerX, centerY, FlipAnimation.SCALE_DEFAULT, FlipAnimation.ScaleUpDownEnum.SCALE_DOWN);
         outFlip.setDuration(duration);
