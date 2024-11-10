@@ -26,7 +26,6 @@ public class TrainManager {
         random = new Random();
         for(int i = 0; i < QUESTIONS_COUNT; i++){
             ProductTheme theme = ProductTheme.randomTheme();
-            Log.d(TAG, "initTrainingSession: "+ProductsManager.productCount(theme));
             int id = random.nextInt(ProductsManager.productCount(theme));
             Product product = ProductsManager.getProduct(theme, id);
             trainCards.add(new Pair<>(getRandomQuote(product.getText()), product));
@@ -43,7 +42,6 @@ public class TrainManager {
     }
     public static void wrongAnswer(){
         int newId = random.nextInt(trainCards.size()/2)+trainCards.size()/2;
-        Log.d(TAG, "wrongAnswer: added on new id=" + newId);
         trainCards.add(newId, trainCards.get(0));
         trainCards.remove(0);
     }

@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.Literature12.Tag">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/round_edges</item>
-        <item name="android:paddingHorizontal" tools:ignore="NewApi">10dp</item>
-        <item name="android:paddingVertical" tools:targetApi="o">5dp</item>
+    <style name="Theme.Literature12.Theme"></style>
+    <style name="Theme.Literature12.Genre"></style>
+
+    <style name="Theme.Literature12.Theme.Love">
+        <item name="backgroundColor">@color/pastel_pink</item>
+        <item name="nameBg">@string/theme_LOVE</item>
+    </style>
+    <style name="Theme.Literature12.Theme.Hope">
+        <item name="backgroundColor">@color/pastel_blue</item>
+        <item name="nameBg">@string/theme_HOPE</item>
     </style>
 
-    <style name="Theme.Literature12.Theme.Love" parent="Theme.Literature12.Tag">
-        <item name="android:backgroundTint">@color/pastel_pink</item>
-        <item name="android:text">@string/theme_LOVE</item>
+    <style name="Theme.Literature12.Genre.Stihotvorenie">
+        <item name="backgroundColor">@color/pastel_yellow</item>
+        <item name="nameBg">@string/genre_STIHOTWORENIE</item>
     </style>
-    <style name="Theme.Literature12.Theme.Hope" parent="Theme.Literature12.Tag">
-        <item name="android:backgroundTint">@color/pastel_blue</item>
-        <item name="android:text">@string/theme_HOPE</item>
+    <style name="Theme.Literature12.Genre.Poema">
+        <item name="backgroundColor">@color/pastel_pink</item>
+        <item name="nameBg">@string/genre_POEMA</item>
+    </style>
+    <style name="Theme.Literature12.Genre.Razkaz">
+        <item name="backgroundColor">@color/pastel_orange</item>
+        <item name="nameBg">@string/genre_RAZKAZ </item>
+    </style>
+    <style name="Theme.Literature12.Genre.Roman">
+        <item name="backgroundColor">@color/pastel_purple</item>
+        <item name="nameBg">@string/genre_ROMAN</item>
+    </style>
+    <style name="Theme.Literature12.Genre.Powest">
+        <item name="backgroundColor">@color/pastel_greenish</item>
+        <item name="nameBg">@string/genre_POWEST</item>
+    </style>
+    <style name="Theme.Literature12.Genre.Elegiq">
+        <item name="backgroundColor">@color/pastel_blue</item>
+        <item name="nameBg">@string/genre_ELEGIQ</item>
+    </style>
+    <style name="Theme.Literature12.Genre.Oda">
+        <item name="backgroundColor">@color/pastel_turquoise</item>
+        <item name="nameBg">@string/genre_ODA</item>
+    </style>
+    <style name="Theme.Literature12.Genre.Balada">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/genre_BALADA</item>
     </style>
 </resources>

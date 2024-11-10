@@ -35,4 +35,16 @@ public class Product {
     public void setTheme(ProductTheme theme) {
         this.theme = theme;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "title='" + title + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", genre=" + genre +
+                ", style=" + style +
+                ", theme=" + theme +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

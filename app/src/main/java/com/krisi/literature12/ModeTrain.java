@@ -24,6 +24,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.krisi.literature12.animation.AnimationFactory;
 import com.krisi.literature12.products.Product;
 
+import org.w3c.dom.Text;
+
 public class ModeTrain extends AppCompatActivity {
 
     private static final String TAG = "TRAIN";
@@ -107,10 +109,14 @@ public class ModeTrain extends AppCompatActivity {
                 ((TextView) findViewById(R.id.tvTitle)).setText(card.second.getTitle());
                 ((TextView) findViewById(R.id.tvAuthor)).setText(card.second.getAuthorName());
 
-                TextView mMyButton = new TextView(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), null, 0);
-                mMyButton.setId(View.generateViewId());
-                ((ConstraintLayout) findViewById(R.id.clTags)).addView(mMyButton);
-                ((Flow) findViewById(R.id.flow)).addView(mMyButton);
+                View view = null;
+                for(int i = 0; i < 2; i++) {
+                    if(i==0) view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), R.layout.widget_tag, null);
+                    if(i==1) view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getGenre().theme), R.layout.widget_tag, null);
+                    view.setId(View.generateViewId());
+                    ((ConstraintLayout) findViewById(R.id.clTags)).addView(view);
+                    ((Flow) findViewById(R.id.flow)).addView(view);
+                }
             }
         }, 150);
     }

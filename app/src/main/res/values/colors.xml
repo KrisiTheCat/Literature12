@@ -4,10 +4,11 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="trainingAccent">#162B57</color>
+    <color name="lightGray">#EFEFEF</color>
 
     <color name="pastel_yellow">#F6CF71</color>
     <color name="pastel_orange">#F89C74</color>
-    <color name="pastel_red">#FE8E88</color>
+    <color name="pastel_red">#F6827C</color>
     <color name="pastel_pink">#FE88B1</color>
     <color name="pastel_green">#87C55F</color>
     <color name="pastel_blue">#9EBAF3</color>

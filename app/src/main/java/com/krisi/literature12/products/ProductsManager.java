@@ -34,10 +34,8 @@ public class ProductsManager {
     }
     static ArrayList<Product> readThemeLevels(JSONArray obj, ProductTheme theme) throws JSONException {
         ArrayList<Product> currLevels = new ArrayList<>();
-        Log.d(TAG, "readThemeLevels: " + obj);
         for (int i = 0; i < obj.length(); i++) {
             JSONObject jo_inside = obj.getJSONObject(i);
-            Log.d(TAG, "readThemeLevels: " + jo_inside);
             String myJson= jo_inside.toString();
             Product prod = new Gson().fromJson(myJson, Product.class);
             prod.setTheme(theme);
@@ -63,10 +61,12 @@ public class ProductsManager {
     }
 
     public static int productCount(ProductTheme theme){
+        if(!products.containsKey(theme)) return -1;
         return products.get(theme).size();
     }
 
     public static Product getProduct(ProductTheme theme, int id){
+        if(!products.containsKey(theme)) return null;
         return products.get(theme).get(id);
     }
 }

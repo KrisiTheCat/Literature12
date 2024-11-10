@@ -3,6 +3,7 @@
 
     <string name="mode_train">Тренировка</string>
     <string name="mode_test">Изпит</string>
+    <string name="mode_collection">Христоматия</string>
 
     <string name="style_EXPRESSIONISM">експресионизъм</string>
     <string name="style_REALISM">реализъм</string>
@@ -15,4 +16,14 @@
 
     <string name="theme_LOVE">Любовта</string>
     <string name="theme_HOPE">Вярата и надеждата</string>
+
+    <string name="genre_RAZKAZ">разказ</string>
+    <string name="genre_POEMA">поема</string>
+    <string name="genre_ELEGIQ">елегия</string>
+    <string name="genre_POWEST">повест</string>
+    <string name="genre_ROMAN">роман</string>
+    <string name="genre_BALADA">балада</string>
+    <string name="genre_ODA">ода</string>
+    <string name="genre_STIHOTWORENIE">стихотворение</string>
+
 </resources>
