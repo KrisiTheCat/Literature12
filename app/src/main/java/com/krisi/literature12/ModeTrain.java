@@ -9,6 +9,7 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.constraintlayout.helper.widget.Flow;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -32,6 +34,8 @@ public class ModeTrain extends AppCompatActivity {
 
     private ImageView btnView;
     private ViewFlipper viewFlipper;
+    private TextView tvCardsDone;
+    private ProgressBar pbCards;
     private boolean isQuoteSide;
 
     @Override
@@ -50,6 +54,8 @@ public class ModeTrain extends AppCompatActivity {
 
     void initLayout(){
         btnView = findViewById(R.id.btnView);
+        tvCardsDone = findViewById(R.id.tvCardsDone);
+        pbCards = findViewById(R.id.pbCards);
         isQuoteSide = true;
 
         viewFlipper = findViewById(R.id.vfFlashcard);
@@ -59,11 +65,9 @@ public class ModeTrain extends AppCompatActivity {
                 AnimationFactory.flipTransition(viewFlipper, AnimationFactory.FlipDirection.LEFT_RIGHT);
                 if(isQuoteSide){
                     btnView.setImageDrawable(AppCompatResources.getDrawable(ModeTrain.this,R.drawable.opened_eye));
-                    findViewById(R.id.btnWrongHide).setAlpha(0);
                     isQuoteSide = false;
                 }else{
                     btnView.setImageDrawable(AppCompatResources.getDrawable(ModeTrain.this, R.drawable.closed_eye));
-                    findViewById(R.id.btnWrongHide).setAlpha(0.3f);
                     isQuoteSide = true;
                 }
             }
@@ -76,6 +80,7 @@ public class ModeTrain extends AppCompatActivity {
             public void onClick(View v) {
                 TrainManager.correctAnswer();
                 initFlashcard();
+                initCardsProgress();
             }
         });
         findViewById(R.id.btnWrong).setOnClickListener(new View.OnClickListener() {
@@ -83,20 +88,20 @@ public class ModeTrain extends AppCompatActivity {
             public void onClick(View v) {
                 TrainManager.wrongAnswer();
                 initFlashcard();
+                initCardsProgress();
             }
         });
+        initCardsProgress();
     }
 
     void initFlashcard(){
         Pair<String, Product> card = TrainManager.getCardInfo();
         if(card == null){
-            Log.d(TAG, "initFlashcard: FINISHED");
             return;
         }
         viewFlipper.setDisplayedChild(0);
 
         btnView.setImageDrawable(AppCompatResources.getDrawable(ModeTrain.this, R.drawable.closed_eye));
-        findViewById(R.id.btnWrongHide).setAlpha(0.3f);
         isQuoteSide = true;
 
         Handler handler = new Handler();
@@ -110,14 +115,27 @@ public class ModeTrain extends AppCompatActivity {
                 ((TextView) findViewById(R.id.tvAuthor)).setText(card.second.getAuthorName());
 
                 View view = null;
+                ConstraintLayout layout = findViewById(R.id.clTags);
+
+                ConstraintSet set = new ConstraintSet();
+
                 for(int i = 0; i < 2; i++) {
-                    if(i==0) view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), R.layout.widget_tag, null);
-                    if(i==1) view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getGenre().theme), R.layout.widget_tag, null);
-                    view.setId(View.generateViewId());
-                    ((ConstraintLayout) findViewById(R.id.clTags)).addView(view);
-                    ((Flow) findViewById(R.id.flow)).addView(view);
+                    if(i==0){
+                        view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), R.layout.widget_tag, null);
+                        view.setId(R.id.tvStyle);
+                    }
+                    if(i==1){
+                        view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getGenre().theme), R.layout.widget_tag, null);
+                        view.setId(R.id.tvGenre);
+                    }
+                    layout.addView(view);
                 }
             }
         }, 150);
+    }
+
+    void initCardsProgress(){
+        tvCardsDone.setText(TrainManager.getCorrectCount() + " " + getString(R.string.done));
+        pbCards.setProgress((int) ((TrainManager.getCorrectCount()*100/TrainManager.getCardsCount())), true);
     }
 }

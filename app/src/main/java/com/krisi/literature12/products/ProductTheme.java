@@ -10,8 +10,10 @@ import java.util.List;
 import java.util.Random;
 
 public enum  ProductTheme{
-    HOPE (R.style.Theme_Literature12_Theme_Hope),
-    LOVE (R.style.Theme_Literature12_Theme_Love);
+    LOVE (R.style.Theme_Literature12_Theme_LOVE),
+    HOPE (R.style.Theme_Literature12_Theme_HOPE),
+    LABOR(R.style.Theme_Literature12_Theme_LABOR),
+    CHOICE(R.style.Theme_Literature12_Theme_CHOICE);
 
     public int theme;
     ProductTheme(int theme1){

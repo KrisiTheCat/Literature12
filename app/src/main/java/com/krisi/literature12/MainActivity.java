@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openTraining(View view){
         TrainManager.initTrainingSession();
-        Intent in = new Intent(MainActivity.this, ModeTrain.class);
+        Intent in = new Intent(MainActivity.this, ModeTrainSettings.class);
         startActivity(in);
     }
     public void openCollection(View view){
@@ -39,3 +39,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(in);
     }
 }
+
+//TODO save training preferences

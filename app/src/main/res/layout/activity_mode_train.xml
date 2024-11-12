@@ -5,10 +5,80 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBEBEB"
+    android:background="@color/mediumGray"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".ModeTrain">
+
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@color/lightGray"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:gravity="center"
+            android:text="@string/mode_train"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/tvCardsDone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCardsDone"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ProgressBar
+            android:id="@+id/pbCards"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCardsDone"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/tvCardsDone"
+            app:layout_constraintTop_toTopOf="@+id/tvCardsDone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ViewFlipper
         android:id="@+id/vfFlashcard"
@@ -26,7 +96,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/round_edges"
+            android:background="@drawable/round_edges_big"
             android:backgroundTint="@color/white"
             android:foreground="@drawable/round_edges_border"
             android:foregroundTint="@color/trainingAccent"
@@ -72,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:constraint_referenced_ids="textView2,textView3,tvTheme"
+                    app:constraint_referenced_ids="tvStyle,tvGenre"
                     app:flow_horizontalGap="10dp"
                     app:flow_maxElementsWrap="3"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -81,10 +151,10 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_edges"
+                    android:background="@drawable/round_edges_big"
                     android:backgroundTint="@color/pastel_yellow"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="5dp"
@@ -92,10 +162,10 @@
 
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/tvGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_edges"
+                    android:background="@drawable/round_edges_big"
                     android:backgroundTint="@color/pastel_blue"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="5dp"
@@ -109,7 +179,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/round_edges"
+            android:background="@drawable/round_edges_big"
             android:backgroundTint="@color/trainingAccent"
             android:gravity="center"
             android:orientation="vertical">
@@ -131,7 +201,7 @@
         android:id="@+id/btnView"
         android:layout_width="80dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges"
+        android:background="@drawable/round_edges_big"
         android:backgroundTint="@color/white"
         android:padding="16dp"
         android:src="@drawable/closed_eye"
@@ -146,7 +216,7 @@
         android:id="@+id/btnWrong"
         android:layout_width="80dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges"
+        android:background="@drawable/round_edges_big"
         android:backgroundTint="@color/white"
         android:padding="16dp"
         android:src="@drawable/thumbs_down"
@@ -160,7 +230,7 @@
         android:id="@+id/btnCorrect"
         android:layout_width="80dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges"
+        android:background="@drawable/round_edges_big"
         android:backgroundTint="@color/white"
         android:padding="16dp"
         android:src="@drawable/thumbs_up"
@@ -170,14 +240,4 @@
         app:layout_constraintStart_toEndOf="@+id/btnView"
         app:layout_constraintTop_toTopOf="@+id/btnView" />
 
-    <View
-        android:id="@+id/btnWrongHide"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0.3"
-        android:background="@drawable/round_edges"
-        app:layout_constraintBottom_toBottomOf="@+id/btnWrong"
-        app:layout_constraintEnd_toEndOf="@+id/btnWrong"
-        app:layout_constraintStart_toStartOf="@+id/btnWrong"
-        app:layout_constraintTop_toTopOf="@+id/btnWrong" />
 </androidx.constraintlayout.widget.ConstraintLayout>

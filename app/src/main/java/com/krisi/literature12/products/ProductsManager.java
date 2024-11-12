@@ -22,12 +22,11 @@ public class ProductsManager {
     public static Map<ProductTheme, ArrayList<Product>> products = new HashMap<>();
     public static void init(Context contextm){
         context = contextm;
-        JSONArray all = null;
         try {
-            all = new JSONArray(loadJSONFromAsset("HOPE"));
-            products.put(ProductTheme.HOPE, readThemeLevels(all, ProductTheme.HOPE));
-            all = new JSONArray(loadJSONFromAsset("LOVE"));
-            products.put(ProductTheme.LOVE, readThemeLevels(all, ProductTheme.LOVE));
+            JSONObject all = new JSONObject(loadJSONFromAsset("products"));
+            for(ProductTheme theme : ProductTheme.values()){
+                products.put(theme, readThemeLevels(all.getJSONArray(theme.name()), theme));
+            }
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

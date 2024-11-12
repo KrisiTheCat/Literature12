@@ -4,6 +4,13 @@
     <string name="mode_train">Тренировка</string>
     <string name="mode_test">Изпит</string>
     <string name="mode_collection">Христоматия</string>
+    <string name="mode_settings">Настройки</string>
+
+
+    <string name="mode_settings_questions_count">Колко въпроса искаш?</string>
+    <string name="mode_settings_questions_content">Кои произведения да включа?</string>
+
+    <string name="done">готови</string>
 
     <string name="style_EXPRESSIONISM">експресионизъм</string>
     <string name="style_REALISM">реализъм</string>
@@ -16,6 +23,8 @@
 
     <string name="theme_LOVE">Любовта</string>
     <string name="theme_HOPE">Вярата и надеждата</string>
+    <string name="theme_LABOR">Трудът и творчеството</string>
+    <string name="theme_CHOICE">Изборът и раздвоението</string>
 
     <string name="genre_RAZKAZ">разказ</string>
     <string name="genre_POEMA">поема</string>
