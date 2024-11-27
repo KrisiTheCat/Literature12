@@ -5,12 +5,28 @@
     <string name="mode_test">Изпит</string>
     <string name="mode_collection">Христоматия</string>
     <string name="mode_settings">Настройки</string>
+    <string name="mode_results">Резултати</string>
 
 
     <string name="mode_settings_questions_count">Колко въпроса искаш?</string>
     <string name="mode_settings_questions_content">Кои произведения да включа?</string>
 
+    <string name="from">от</string>
     <string name="done">готови</string>
+    <string name="correct">верни</string>
+    <string name="knew">знаеше</string>
+    <string name="wrong">грешни</string>
+    <string name="learnt">научи</string>
+    <string name="questions">въпроса</string>
+
+    <string name="results_congrats">Поздравления!</string>
+    <string name="results_message1">Литературата е твоята сила!</string>
+    <string name="results_try_again">Преговори отново:</string>
+    <string name="results_already_know">Вече знаеш:</string>
+
+    <string name="product_genre">Жанр:</string>
+    <string name="product_theme">Тема:</string>
+    <string name="product_style">Течение:</string>
 
     <string name="style_EXPRESSIONISM">експресионизъм</string>
     <string name="style_REALISM">реализъм</string>

@@ -1,5 +1,6 @@
 package com.krisi.literature12;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,9 @@ public class ModeTrainSettings extends AppCompatActivity {
     SeekBar seekBar;
     TextView tvQuestions;
 
-    private Set<String> productsUsed = new HashSet<>();
+    private ArrayList<String> productsUsed = new ArrayList<>();
+    public static TrainManager modeManager;
+    private int questionsCount = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,8 @@ public class ModeTrainSettings extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress %18 == 0) tvQuestions.setVisibility(View.INVISIBLE);
                 else tvQuestions.setVisibility(View.VISIBLE);
-                tvQuestions.setText((progress*5+10)+"");
+                questionsCount = (progress*5+10);
+                tvQuestions.setText(questionsCount+"");
 
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) findViewById(R.id.vOrientation).getLayoutParams();
                 params.horizontalBias = ((float) progress) /18; // here is one modification for example. modify anything else you want :)
@@ -109,10 +113,27 @@ public class ModeTrainSettings extends AppCompatActivity {
                     view.setTag(theme+" "+i);
                     productsUsed.add(theme+" "+i);
                     layout.addView(view);
-//                    flow.addView(view);
                 }
             }
         }
+
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                modeManager = new TrainManager();
+                modeManager.initTrainingSession(productsUsed, questionsCount);
+                Intent in = new Intent(ModeTrainSettings.this, ModeTrain.class);
+                startActivity(in);
+                finish();
+            }
+        });
 
     }
 }

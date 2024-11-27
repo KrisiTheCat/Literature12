@@ -1,5 +1,6 @@
 package com.krisi.literature12;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
@@ -78,7 +79,7 @@ public class ModeTrain extends AppCompatActivity {
         findViewById(R.id.btnCorrect).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TrainManager.correctAnswer();
+                ModeTrainSettings.modeManager.correctAnswer();
                 initFlashcard();
                 initCardsProgress();
             }
@@ -86,7 +87,7 @@ public class ModeTrain extends AppCompatActivity {
         findViewById(R.id.btnWrong).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TrainManager.wrongAnswer();
+                ModeTrainSettings.modeManager.wrongAnswer();
                 initFlashcard();
                 initCardsProgress();
             }
@@ -95,8 +96,12 @@ public class ModeTrain extends AppCompatActivity {
     }
 
     void initFlashcard(){
-        Pair<String, Product> card = TrainManager.getCardInfo();
+        Pair<String, Product> card = ModeTrainSettings.modeManager.getCardInfo();
         if(card == null){
+            Intent in = new Intent(ModeTrain.this, ModeResults.class);
+            in.putExtra("type", "TRAIN");
+            startActivity(in);
+            finish();
             return;
         }
         viewFlipper.setDisplayedChild(0);
@@ -135,7 +140,10 @@ public class ModeTrain extends AppCompatActivity {
     }
 
     void initCardsProgress(){
-        tvCardsDone.setText(TrainManager.getCorrectCount() + " " + getString(R.string.done));
-        pbCards.setProgress((int) ((TrainManager.getCorrectCount()*100/TrainManager.getCardsCount())), true);
+        tvCardsDone.setText(ModeTrainSettings.modeManager.getCorrectCount() + " " +
+                getString(R.string.from) + " " +
+                ModeTrainSettings.modeManager.getCardsCount() + " " +
+                getString(R.string.done));
+        pbCards.setProgress((int) ((ModeTrainSettings.modeManager.getCorrectCount()*100/ModeTrainSettings.modeManager.getCardsCount())), true);
     }
 }

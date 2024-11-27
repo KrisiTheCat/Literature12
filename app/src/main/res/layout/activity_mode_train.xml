@@ -5,27 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mediumGray"
+    android:background="@color/backgroundKrisi"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".ModeTrain">
 
 
-    <View
-        android:id="@+id/view4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
-        android:layout_height="90dp"
-        android:background="@color/lightGray"
+        android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +23,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="20dp"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
             android:layout_marginStart="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,43 +31,75 @@
             app:srcCompat="@drawable/back" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvMode"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="80dp"
+            android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="@string/mode_train"
+            android:textSize="18sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/tvCardsDone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/round_edges_big"
+        android:backgroundTint="@color/lightGray"
+        android:padding="24dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
         <TextView
             android:id="@+id/tvCardsDone"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/pbCards"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCardsDone"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toEndOf="@+id/tvCardsDone"
-            app:layout_constraintTop_toTopOf="@+id/tvCardsDone" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvCardsDone"
+            app:layout_constraintTop_toBottomOf="@+id/tvCardsDone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="-24dp"
+        android:background="@drawable/round_edges_big"
+        android:backgroundTint="@color/mediumGray"
+        app:layout_constraintBottom_toBottomOf="@+id/vfFlashcard"
+        app:layout_constraintEnd_toEndOf="@+id/vfFlashcard"
+        app:layout_constraintStart_toStartOf="@+id/vfFlashcard"
+        app:layout_constraintTop_toTopOf="@+id/vfFlashcard" />
 
     <ViewFlipper
         android:id="@+id/vfFlashcard"
@@ -86,20 +107,38 @@
         android:layout_height="300dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:clipChildren="false"
         android:clipToOutline="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_edges_big"
+            android:backgroundTint="@color/trainingAccent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvQuote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="32dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/round_edges_big"
             android:backgroundTint="@color/white"
-            android:foreground="@drawable/round_edges_border"
-            android:foregroundTint="@color/trainingAccent"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="24dp">
@@ -176,68 +215,79 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_edges_big"
-            android:backgroundTint="@color/trainingAccent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvQuote"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="32dp"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:textSize="19sp" />
-        </LinearLayout>
-
     </ViewFlipper>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="-80dp"
+        android:background="@drawable/round_edges_big"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnWrong" />
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="90dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:background="@drawable/round_edges_circle"
+        android:backgroundTint="@color/backgroundKrisi"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageView
         android:id="@+id/btnView"
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges_big"
+        android:background="@drawable/round_edges_circle"
         android:backgroundTint="@color/white"
         android:padding="16dp"
         android:src="@drawable/closed_eye"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/btnCorrect"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnWrong"
-        app:layout_constraintTop_toBottomOf="@+id/vfFlashcard" />
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <ImageView
         android:id="@+id/btnWrong"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges_big"
-        android:backgroundTint="@color/white"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/round_edges_circle"
+        android:backgroundTint="@color/pastel_red"
         android:padding="16dp"
         android:src="@drawable/thumbs_down"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/btnView"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnView" />
+        app:layout_constraintStart_toStartOf="@+id/view" />
 
     <ImageView
         android:id="@+id/btnCorrect"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="0dp"
-        android:background="@drawable/round_edges_big"
-        android:backgroundTint="@color/white"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_edges_circle"
+        android:backgroundTint="@color/pastel_green"
         android:padding="16dp"
         android:src="@drawable/thumbs_up"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnView"
-        app:layout_constraintTop_toTopOf="@+id/btnView" />
+        app:layout_constraintEnd_toEndOf="@+id/view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

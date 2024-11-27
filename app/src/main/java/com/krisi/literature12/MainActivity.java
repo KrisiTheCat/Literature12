@@ -16,6 +16,7 @@ import com.krisi.literature12.products.ProductsManager;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MAIN";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTraining(View view){
-        TrainManager.initTrainingSession();
         Intent in = new Intent(MainActivity.this, ModeTrainSettings.class);
         startActivity(in);
     }

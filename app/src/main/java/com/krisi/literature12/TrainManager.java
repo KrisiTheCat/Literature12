@@ -10,56 +10,54 @@ import com.krisi.literature12.products.ProductsManager;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
-public class TrainManager {
+import kotlin.Triple;
 
-    private static final int QUESTIONS_COUNT = 10;
-    private static final int QUOTE_MIN_SYMBOLS = 60;
-    private static final int QUOTE_MAX_SYMBOLS = 140;
-    private static int correctCount;
-    private static final String TAG = "TRAIN_M";
-    public static ArrayList<Pair<String, Product>> trainCards = new ArrayList<>();
-    private static Random random = new Random();
+public class TrainManager extends ModeManager{
+
+    private  final int QUOTE_MIN_SYMBOLS = 60;
+    private  final int QUOTE_MAX_SYMBOLS = 140;
+    private  final String TAG = "TRAIN_M";
+    public  ArrayList<Triple<String, Product, Boolean>> trainCards = new ArrayList<>();
 
     TrainManager(){
 
     }
 
-    public static void initTrainingSession(){
-        random = new Random();
+    public  void initTrainingSession(ArrayList<String> products, int questions){
+        super.initTrainingSession(products,questions);
+        trainCards.clear();
         for(int i = 0; i < QUESTIONS_COUNT; i++){
-            ProductTheme theme = ProductTheme.randomTheme();
-            int id = random.nextInt(ProductsManager.productCount(theme));
-            Product product = ProductsManager.getProduct(theme, id);
-            trainCards.add(new Pair<>(getRandomQuote(product.getText()), product));
+            int prodId = random.nextInt(allProducts.size());
+            trainCards.add(new Triple<>(getRandomQuote(allProducts.get(prodId).getText()), allProducts.get(prodId), true));
         }
-        correctCount = 0;
     }
 
-    public static Pair<String, Product> getCardInfo(){
+    public Pair<String, Product> getCardInfo(){
         if(trainCards.isEmpty()) return null;
-        return trainCards.get(0);
+        return new Pair<>(trainCards.get(0).getFirst(),trainCards.get(0).getSecond());
     }
 
-    public static int getCardsCount(){
-        return QUESTIONS_COUNT;
-    }
-
-    public static int getCorrectCount(){
-        return correctCount;
-    }
-
-    public static void correctAnswer(){
+    public void correctAnswer(){
         trainCards.remove(0);
-        correctCount ++;
+        correctCount++;
     }
-    public static void wrongAnswer(){
-        int newId = random.nextInt(trainCards.size()/2)+trainCards.size()/2;
-        trainCards.add(newId, trainCards.get(0));
+    public  void wrongAnswer(){
+        super.wrongAnswerProduct(trainCards.get(0).getSecond());
+        if(trainCards.get(0).getThird()){
+            super.wrongAnswer();
+        }
+        if(trainCards.size() == 1) return;
+        int newId = 2;
+        if(trainCards.size() != 2){
+            newId = random.nextInt(trainCards.size()/2)+trainCards.size()/2+1;
+        }
+        trainCards.add(newId, new Triple<>(trainCards.get(0).getFirst(), trainCards.get(0).getSecond(), false));
         trainCards.remove(0);
     }
 
-    public static String getRandomQuote(String text){
+    public  String getRandomQuote(String text){
         int position = random.nextInt(text.length());
 
         int start = -1;
@@ -90,7 +88,7 @@ public class TrainManager {
         return text.substring(start, end);
     }
 
-    private static int findNextSentenceEnd(String text, int fromIndex) {
+    private  int findNextSentenceEnd(String text, int fromIndex) {
         int nextNewline = text.indexOf('\n', fromIndex);
         int nextPeriod = text.indexOf('.', fromIndex);
         int nextQuestion = text.indexOf('?', fromIndex);
