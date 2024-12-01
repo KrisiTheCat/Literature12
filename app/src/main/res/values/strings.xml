@@ -11,6 +11,16 @@
     <string name="mode_settings_questions_count">Колко въпроса искаш?</string>
     <string name="mode_settings_questions_content">Кои произведения да включа?</string>
 
+    <string name="mode_test_TITLE_BY_GENRE">Кое от произведенията се определя по жанр като</string>
+    <string name="mode_test_GENRE_BY_TITLE">От какъв жанр е творбата</string>
+    <string name="mode_test_AUTHOR_BY_TITLE">Кой е авторът на</string>
+    <string name="mode_test_TITLE_BY_AUTHOR">Кое от произведенията е написано от</string>
+    <string name="mode_test_submit">Предавам</string>
+
+    <string name="toast_needMoreProducst">Нуждая се от поне 4 творби, за да създам тест</string>
+    <string name="toast_answerAll">Моля отговори на всички въпроси</string>
+    <string name="toast_cantChangeAns">Тестът вече е предаден</string>
+
     <string name="from">от</string>
     <string name="done">готови</string>
     <string name="correct">верни</string>
@@ -23,6 +33,8 @@
     <string name="results_message1">Литературата е твоята сила!</string>
     <string name="results_try_again">Преговори отново:</string>
     <string name="results_already_know">Вече знаеш:</string>
+    <string name="results_look_again">Разгледай теста</string>
+    <string name="results_look_results">Виж резултатите</string>
 
     <string name="product_genre">Жанр:</string>
     <string name="product_theme">Тема:</string>

@@ -1,6 +1,8 @@
 package com.krisi.literature12;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -12,12 +14,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
+import com.krisi.literature12.manager.ModeManager;
 
 public class ModeResults extends AppCompatActivity {
 
     ModeManager modeManager = null;
-    String type;
+    private SpecificMode mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +32,13 @@ public class ModeResults extends AppCompatActivity {
             return insets;
         });
 
-        type = getIntent().getStringExtra("type");
-        if(type.equals("TRAIN")){
-            modeManager = ModeTrainSettings.modeManager;
+        mode = (SpecificMode) getIntent().getSerializableExtra("mode");
+        modeManager = ModeSettings.modeManager;
         initLayout();
-        }
     }
 
     void initLayout(){
-        if(type.equals("TRAIN")) ((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_train);
+        if(mode == SpecificMode.TRAIN) ((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_train);
         else ((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_test);
         initOverview();
         initProdsToLearn();
@@ -47,9 +47,21 @@ public class ModeResults extends AppCompatActivity {
 
     void initOverview(){
         ((TextView) findViewById(R.id.tvQuestionsCount)).setText(modeManager.QUESTIONS_COUNT+"");
-        if(type.equals("TRAIN")){
+        if(mode == SpecificMode.TRAIN){
             ((TextView) findViewById(R.id.tvCorrectLabel)).setText(R.string.knew);
             ((TextView) findViewById(R.id.tvWrongLabel)).setText(R.string.learnt);
+            (findViewById(R.id.clLookTest)).setVisibility(View.GONE);
+        }
+        else{
+            (findViewById(R.id.clLookTest)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(ModeResults.this, ModeTest.class);
+                    in.putExtra("mode", SpecificMode.TEST_REVIEW);
+                    startActivity(in);
+                    finish();
+                }
+            });
         }
         ((TextView) findViewById(R.id.tvQuestionsCorrect)).setText((modeManager.QUESTIONS_COUNT - modeManager.wrongAnswers)+"");
         ((TextView) findViewById(R.id.tvQuestionsWrong)).setText((modeManager.wrongAnswers)+"");

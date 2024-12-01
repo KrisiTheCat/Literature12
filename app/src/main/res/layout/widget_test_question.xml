@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_edges_big"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:tag="question"
+        android:text="1. Кой е авторът на произведението “Колко си хубава”?" />
+
+    <LinearLayout
+        android:id="@+id/llAnswer1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/round_edges_light_border"
+        android:gravity="center"
+        android:onClick="clickAnswer"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAnswer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="А. Димчо Дебелянов" />
+
+        <ImageView
+            android:id="@+id/ivAnswer1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tag="image"
+            app:srcCompat="@drawable/check_empty" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAnswer2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/round_edges_light_border"
+        android:gravity="center"
+        android:onClick="clickAnswer"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAnswer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="А. Димчо Дебелянов" />
+
+        <ImageView
+            android:id="@+id/ivAnswer2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tag="image"
+            app:srcCompat="@drawable/check_empty" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAnswer3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/round_edges_light_border"
+        android:gravity="center"
+        android:onClick="clickAnswer"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAnswer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="А. Димчо Дебелянов" />
+
+        <ImageView
+            android:id="@+id/ivAnswer3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tag="image"
+            app:srcCompat="@drawable/check_empty" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAnswer4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/round_edges_light_border"
+        android:gravity="center"
+        android:onClick="clickAnswer"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvAnswer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="А. Димчо Дебелянов" />
+
+        <ImageView
+            android:id="@+id/ivAnswer4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:tag="image"
+            app:srcCompat="@drawable/check_empty" />
+
+    </LinearLayout>
+</LinearLayout>

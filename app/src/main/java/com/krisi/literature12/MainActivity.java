@@ -2,7 +2,6 @@ package com.krisi.literature12;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -31,7 +30,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTraining(View view){
-        Intent in = new Intent(MainActivity.this, ModeTrainSettings.class);
+        Intent in = new Intent(MainActivity.this, ModeSettings.class);
+        in.putExtra("mode", SpecificMode.TRAIN);
+        startActivity(in);
+    }
+
+    public void openTest(View view){
+        Intent in = new Intent(MainActivity.this, ModeSettings.class);
+        in.putExtra("mode", SpecificMode.TEST);
         startActivity(in);
     }
     public void openCollection(View view){

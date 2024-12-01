@@ -20,6 +20,7 @@ public class ProductsManager {
     private static final String TAG = "PRODUCTS";
     static Context context;
     public static Map<ProductTheme, ArrayList<Product>> products = new HashMap<>();
+    public static ArrayList<String> authors = new ArrayList<>();
     public static void init(Context contextm){
         context = contextm;
         try {
@@ -38,6 +39,7 @@ public class ProductsManager {
             String myJson= jo_inside.toString();
             Product prod = new Gson().fromJson(myJson, Product.class);
             prod.setTheme(theme);
+            if(!authors.contains(prod.getAuthorName())) authors.add(prod.getAuthorName());
             currLevels.add(prod);
         }
         return currLevels;

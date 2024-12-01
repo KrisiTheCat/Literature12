@@ -1,16 +1,10 @@
-package com.krisi.literature12;
+package com.krisi.literature12.manager;
 
-import android.util.Log;
 import android.util.Pair;
 
 import com.krisi.literature12.products.Product;
-import com.krisi.literature12.products.ProductTheme;
-import com.krisi.literature12.products.ProductsManager;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import kotlin.Triple;
 
@@ -21,7 +15,7 @@ public class TrainManager extends ModeManager{
     private  final String TAG = "TRAIN_M";
     public  ArrayList<Triple<String, Product, Boolean>> trainCards = new ArrayList<>();
 
-    TrainManager(){
+    public TrainManager(){
 
     }
 

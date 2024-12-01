@@ -1,14 +1,11 @@
 package com.krisi.literature12;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.util.Pair;
 import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,7 +14,6 @@ import android.widget.ViewFlipper;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.constraintlayout.helper.widget.Flow;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
@@ -26,8 +22,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.krisi.literature12.animation.AnimationFactory;
 import com.krisi.literature12.products.Product;
-
-import org.w3c.dom.Text;
 
 public class ModeTrain extends AppCompatActivity {
 
@@ -79,7 +73,7 @@ public class ModeTrain extends AppCompatActivity {
         findViewById(R.id.btnCorrect).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModeTrainSettings.modeManager.correctAnswer();
+                ModeSettings.modeManager.correctAnswer();
                 initFlashcard();
                 initCardsProgress();
             }
@@ -87,7 +81,7 @@ public class ModeTrain extends AppCompatActivity {
         findViewById(R.id.btnWrong).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModeTrainSettings.modeManager.wrongAnswer();
+                ModeSettings.modeManager.wrongAnswer();
                 initFlashcard();
                 initCardsProgress();
             }
@@ -96,10 +90,10 @@ public class ModeTrain extends AppCompatActivity {
     }
 
     void initFlashcard(){
-        Pair<String, Product> card = ModeTrainSettings.modeManager.getCardInfo();
+        Pair<String, Product> card = ModeSettings.modeManager.getCardInfo();
         if(card == null){
             Intent in = new Intent(ModeTrain.this, ModeResults.class);
-            in.putExtra("type", "TRAIN");
+            in.putExtra("mode", SpecificMode.TRAIN);
             startActivity(in);
             finish();
             return;
@@ -140,10 +134,10 @@ public class ModeTrain extends AppCompatActivity {
     }
 
     void initCardsProgress(){
-        tvCardsDone.setText(ModeTrainSettings.modeManager.getCorrectCount() + " " +
+        tvCardsDone.setText(ModeSettings.modeManager.getCorrectCount() + " " +
                 getString(R.string.from) + " " +
-                ModeTrainSettings.modeManager.getCardsCount() + " " +
+                ModeSettings.modeManager.getCardsCount() + " " +
                 getString(R.string.done));
-        pbCards.setProgress((int) ((ModeTrainSettings.modeManager.getCorrectCount()*100/ModeTrainSettings.modeManager.getCardsCount())), true);
+        pbCards.setProgress((int) ((ModeSettings.modeManager.getCorrectCount()*100/ ModeSettings.modeManager.getCardsCount())), true);
     }
 }

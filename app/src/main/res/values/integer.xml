@@ -2,4 +2,6 @@
 <resources>
     <integer name="card_flip_time_full">4</integer>
     <integer name="card_flip_time_half">2</integer>
+    <dimen name="button_shadow">7dp</dimen>
+    <dimen name="button_shadow_minus">-7dp</dimen>
 </resources>
