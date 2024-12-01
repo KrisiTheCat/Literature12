@@ -7,6 +7,8 @@ import com.krisi.literature12.products.ProductTheme;
 import com.krisi.literature12.products.ProductsManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ModeManager {
@@ -14,8 +16,7 @@ public class ModeManager {
     public int correctCount;
     public int wrongAnswers;
     public ArrayList<Product> allProducts = new ArrayList<>();
-//    public ArrayList<Product> usedProducts = new ArrayList<>();
-    public ArrayList<Product> correctProducts = new ArrayList<>();
+    public Map<Integer, Boolean> usedProducts = new HashMap<>(); // productid in allProducts and true - if answered correctly, false - if not
     public Random random = new Random();
 
 
@@ -45,10 +46,11 @@ public class ModeManager {
     public void wrongAnswer(){
         wrongAnswers++;
     }
+    public void wrongAnswerProduct(int id){
+        usedProducts.put(id, false);
+    }
     public void wrongAnswerProduct(Product prod){
-        if(correctProducts.contains(prod)){
-            correctProducts.remove(prod);
-        }
+        usedProducts.put(allProducts.indexOf(prod), false);
     }
 
 

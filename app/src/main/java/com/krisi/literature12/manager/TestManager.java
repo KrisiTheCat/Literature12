@@ -1,6 +1,7 @@
 package com.krisi.literature12.manager;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.krisi.literature12.R;
 import com.krisi.literature12.products.Product;
@@ -8,9 +9,15 @@ import com.krisi.literature12.products.ProductGenre;
 import com.krisi.literature12.products.ProductsManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class TestManager extends ModeManager{
 
+    private static final String TAG = "TEST";
     ArrayList<TestQuestion> testQuestions = new ArrayList<>();
     Context context;
     public int[] userAnswers;
@@ -19,9 +26,19 @@ public class TestManager extends ModeManager{
 
     public void initTrainingSession(ArrayList<String> products, int questions){
         super.initTrainingSession(products,questions);
+        Set<ProductGenre> genres = new HashSet<>();
+        Set<String> authors = new HashSet<>();
+        for(Product prod : allProducts){
+            genres.add(prod.getGenre());
+            authors.add(prod.getAuthorName());
+        }
+        int prodId = random.nextInt(allProducts.size());
         for(int i = 0 ; i < QUESTIONS_COUNT; i++){
             QuestionType type = QuestionType.getRandom();
-            Product answer = allProducts.get(random.nextInt(allProducts.size()));
+            while(type == QuestionType.TITLE_BY_GENRE && genres.size()<=4 ||
+                    type == QuestionType.TITLE_BY_AUTHOR && authors.size()<=4) type = QuestionType.getRandom();
+            Product answer = allProducts.get(prodId);
+            usedProducts.put(prodId, true);
             int answerId = random.nextInt(4);
 
             boolean createdAlready = false;
@@ -84,7 +101,9 @@ public class TestManager extends ModeManager{
                     break;
             }
             testQuestions.add(question);
+            prodId++; prodId%=allProducts.size();
         }
+        Collections.shuffle(testQuestions);
     }
 
 

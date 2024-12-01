@@ -69,12 +69,8 @@ public class ModeResults extends AppCompatActivity {
 
     void initProdsToLearn(){
         LinearLayout layout = findViewById(R.id.llProdsAgain);
-        if(modeManager.correctProducts.size() == modeManager.allProducts.size()){
-            layout.setVisibility(View.GONE);
-            return;
-        }
         for(int i = 0; i < modeManager.allProducts.size(); i++){
-            if(!modeManager.correctProducts.contains(modeManager.allProducts.get(i))){
+            if(Boolean.FALSE.equals(modeManager.usedProducts.get(i))){
                 View view = View.inflate(new ContextThemeWrapper(ModeResults.this,
                         modeManager.allProducts.get(i).getTheme().theme),
                         R.layout.widget_product, null);
@@ -82,20 +78,24 @@ public class ModeResults extends AppCompatActivity {
                 layout.addView(view);
             }
         }
+        if(layout.getChildCount() == 1)
+            layout.setVisibility(View.GONE);
     }
 
     void initProdsKnown(){
         LinearLayout layout = findViewById(R.id.llProdsKnown);
-        if(modeManager.correctProducts.isEmpty()){
+        for(int i = 0; i < modeManager.allProducts.size(); i++){
+            if(Boolean.TRUE.equals(modeManager.usedProducts.get(i))) {
+                View view = View.inflate(new ContextThemeWrapper(ModeResults.this,
+                                modeManager.allProducts.get(i).getTheme().theme),
+                        R.layout.widget_product, null);
+                ((TextView) view.findViewWithTag("text")).setText("\"" + modeManager.allProducts.get(i).getTitle() +
+                        "\" - " + modeManager.allProducts.get(i).getAuthorName());
+                layout.addView(view);
+            }
+        }
+
+        if(layout.getChildCount() == 1)
             layout.setVisibility(View.GONE);
-            return;
-        }
-        for(int i = 0; i < modeManager.correctProducts.size(); i++){
-            View view = View.inflate(new ContextThemeWrapper(ModeResults.this,
-                            modeManager.correctProducts.get(i).getTheme().theme),
-                    R.layout.widget_product, null);
-            ((TextView) view.findViewWithTag("text")).setText("\"" + modeManager.correctProducts.get(i).getTitle() + "\" - " + modeManager.correctProducts.get(i).getAuthorName());
-            layout.addView(view);
-        }
     }
 }

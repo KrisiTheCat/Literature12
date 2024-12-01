@@ -5,6 +5,7 @@ import android.util.Pair;
 import com.krisi.literature12.products.Product;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import kotlin.Triple;
 
@@ -22,10 +23,13 @@ public class TrainManager extends ModeManager{
     public  void initTrainingSession(ArrayList<String> products, int questions){
         super.initTrainingSession(products,questions);
         trainCards.clear();
+        int prodId = random.nextInt(allProducts.size());
         for(int i = 0; i < QUESTIONS_COUNT; i++){
-            int prodId = random.nextInt(allProducts.size());
+            usedProducts.put(prodId, true);
             trainCards.add(new Triple<>(getRandomQuote(allProducts.get(prodId).getText()), allProducts.get(prodId), true));
+            prodId++; prodId%=allProducts.size();
         }
+        Collections.shuffle(trainCards);
     }
 
     public Pair<String, Product> getCardInfo(){
