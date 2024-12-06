@@ -3,7 +3,6 @@ package com.krisi.literature12;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -56,7 +55,7 @@ public class ModeTest extends AppCompatActivity {
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) view.getLayoutParams();
             lp.bottomMargin = 60;
             view.setLayoutParams(lp);
-            ((TextView) view.findViewById(R.id.tvQuestion)).setText((i + 1) + ". " + question.getQuestion());
+            ((TextView) view.findViewById(R.id.tvTitle)).setText((i + 1) + ". " + question.getQuestion());
             ((TextView) view.findViewById(R.id.tvAnswer1)).setText("А) " + question.getAnswer(0));
             ((TextView) view.findViewById(R.id.tvAnswer2)).setText("Б) " + question.getAnswer(1));
             ((TextView) view.findViewById(R.id.tvAnswer3)).setText("В) " + question.getAnswer(2));
@@ -112,7 +111,11 @@ public class ModeTest extends AppCompatActivity {
             ((TestManager) ModeSettings.modeManager).calculateResult(answers);
         }
         Intent in = new Intent(ModeTest.this, ModeResults.class);
-        in.putExtra("mode", SpecificMode.TEST);
+        if(mode == SpecificMode.TEST_REVIEW){
+            in.putExtra("mode", SpecificMode.TEST_REVIEW);
+        }
+        else
+            in.putExtra("mode", SpecificMode.TEST);
         startActivity(in);
         finish();
     }

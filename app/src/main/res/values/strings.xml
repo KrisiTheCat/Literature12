@@ -6,6 +6,19 @@
     <string name="mode_collection">Христоматия</string>
     <string name="mode_settings">Настройки</string>
     <string name="mode_results">Резултати</string>
+    <string name="mode_favourites">Запазени цитати</string>
+
+    <string name="main_tab_stats">Статистики</string>
+    <string name="main_not_enough">Недостатъчна информация, за да се сформира история</string>
+    <string name="main_tab_last_results">Последни резултати</string>
+    <string name="main_tab_average">Средна\nуспеваемост</string>
+    <string name="main_tab_100">100%</string>
+    <string name="main_tab_0">0%</string>
+
+    <string name="mode_train_descr">Усъвършенствай уменията си за литература</string>
+    <string name="mode_test_descr">Провери знанията си с бързи и забавни тестове</string>
+    <string name="mode_collection_descr">Твоето литературно хранилище - винаги под ръка</string>
+    <string name="mode_favourites_descr">Бърз достъп до любимите ти пасажи и мисли </string>
 
 
     <string name="mode_settings_questions_count">Колко въпроса искаш?</string>

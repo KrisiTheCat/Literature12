@@ -1,11 +1,15 @@
 package com.krisi.literature12;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.krisi.literature12.manager.HistoryManager;
 import com.krisi.literature12.manager.ModeManager;
 
 public class ModeResults extends AppCompatActivity {
@@ -38,7 +43,7 @@ public class ModeResults extends AppCompatActivity {
     }
 
     void initLayout(){
-        if(mode == SpecificMode.TRAIN) ((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_train);
+        if(mode == SpecificMode.TRAIN)((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_train);
         else ((TextView) findViewById(R.id.tvMode)).setText(R.string.mode_test);
         initOverview();
         initProdsToLearn();
@@ -53,6 +58,7 @@ public class ModeResults extends AppCompatActivity {
             (findViewById(R.id.clLookTest)).setVisibility(View.GONE);
         }
         else{
+            ((ProgressBar) findViewById(R.id.progressBar)).setIndeterminateTintList(ColorStateList.valueOf(getResources().getColor(R.color.trainingLight)));
             (findViewById(R.id.clLookTest)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -63,8 +69,19 @@ public class ModeResults extends AppCompatActivity {
                 }
             });
         }
-        ((TextView) findViewById(R.id.tvQuestionsCorrect)).setText((modeManager.QUESTIONS_COUNT - modeManager.wrongAnswers)+"");
+        int correct = modeManager.QUESTIONS_COUNT - modeManager.wrongAnswers;
+        int percent = correct*100 / modeManager.QUESTIONS_COUNT;
+        ((TextView) findViewById(R.id.tvQuestionsCorrect)).setText(correct+"");
         ((TextView) findViewById(R.id.tvQuestionsWrong)).setText((modeManager.wrongAnswers)+"");
+        ((TextView) findViewById(R.id.tvPercent)).setText(percent + "%");
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, percent); // see this max value coming back here, we animate towards that value
+        animation.setDuration(1000); // in milliseconds
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
+
+        HistoryManager.addResult(mode, percent);
+//        ((ProgressBar) findViewById(R.id.progressBar)).setProgress(percent);
     }
 
     void initProdsToLearn(){
@@ -98,4 +115,5 @@ public class ModeResults extends AppCompatActivity {
         if(layout.getChildCount() == 1)
             layout.setVisibility(View.GONE);
     }
+
 }

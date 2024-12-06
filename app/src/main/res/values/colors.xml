@@ -4,7 +4,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="trainingAccent">#162B57</color>
+    <color name="trainingLight">#A7B4C5</color>
     <color name="testAccent">#75C2C8</color>
+    <color name="testLight">#BDE3E6</color>
+    <color name="favouritesLight">#F8A4B1</color>
+    <color name="collectionLight">#C7D69E</color>
+
     <color name="lightWhite">#FFFEFE</color>
     <color name="lightGray">#EFEFEF</color>
     <color name="mediumGray">#C3C3C3</color>

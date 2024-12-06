@@ -1,10 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Literature12" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Customize your light theme here. -->
-    </style>
-
-
+    <style name="Base.Theme.Literature12" parent="Theme.Material3.Light.NoActionBar"></style>
     <style name="Theme.Literature12" parent="Base.Theme.Literature12" >
+        <item name="android:fontFamily">@font/source</item>
     </style>
 </resources>
