@@ -8,6 +8,7 @@
     <string name="mode_results">Резултати</string>
     <string name="mode_favourites">Запазени цитати</string>
 
+    <string name="main_tab_last_opened">Последно разглеждани</string>
     <string name="main_tab_stats">Статистики</string>
     <string name="main_not_enough">Недостатъчна информация, за да се сформира история</string>
     <string name="main_tab_last_results">Последни резултати</string>
@@ -52,6 +53,9 @@
     <string name="product_genre">Жанр:</string>
     <string name="product_theme">Тема:</string>
     <string name="product_style">Течение:</string>
+
+    <string name="grade_11">11 клас</string>
+    <string name="grade_12">12 клас</string>
 
     <string name="style_EXPRESSIONISM">експресионизъм</string>
     <string name="style_REALISM">реализъм</string>

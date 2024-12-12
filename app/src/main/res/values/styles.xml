@@ -3,6 +3,8 @@
 
     <style name="Theme.Literature12.Theme"></style>
     <style name="Theme.Literature12.Genre"></style>
+    <style name="Theme.Literature12.Style"></style>
+    <style name="Theme.Literature12.Grade"></style>
 
     <style name="Theme.Literature12.Theme.LOVE">
         <item name="backgroundColor">@color/pastel_pink</item>
@@ -52,5 +54,48 @@
     <style name="Theme.Literature12.Genre.Balada">
         <item name="backgroundColor">@color/pastel_green</item>
         <item name="nameBg">@string/genre_BALADA</item>
+    </style>
+
+
+    <style name="Theme.Literature12.Style.MODERNISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_MODERNISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.INDIVIDUALISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_INDIVIDUALISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.EST_INDIVIDUALISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_EST_INDIVIDUALISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.SYMBOLISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_SYMBOLISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.REALISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_REALISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.DIABOLISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_DIABOLISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.ROMANTISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_ROMANTISM</item>
+    </style>
+    <style name="Theme.Literature12.Style.EXPRESSIONISM">
+        <item name="backgroundColor">@color/pastel_green</item>
+        <item name="nameBg">@string/style_EXPRESSIONISM</item>
+    </style>
+
+    <style name="Theme.Literature12.Grade.11">
+        <item name="backgroundColor">@color/pastel_blue</item>
+        <item name="nameBg">@string/grade_11</item>
+    </style>
+    <style name="Theme.Literature12.Grade.12">
+        <item name="backgroundColor">@color/pastel_red</item>
+        <item name="nameBg">@string/grade_12</item>
     </style>
 </resources>

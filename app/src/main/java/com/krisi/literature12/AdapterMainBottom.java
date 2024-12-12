@@ -1,6 +1,10 @@
 package com.krisi.literature12;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +13,23 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.krisi.literature12.manager.HistoryManager;
+import com.krisi.literature12.products.Product;
+import com.krisi.literature12.products.ProductsManager;
 
 import java.util.ArrayList;
 
 public class AdapterMainBottom extends PagerAdapter {
 
     private Context mContext;
+    private Activity mActivity;
 
-    public AdapterMainBottom(Context context) {
+    public AdapterMainBottom(Context context, Activity activity) {
         mContext = context;
+        mActivity = activity;
     }
 
     @Override
@@ -41,6 +50,9 @@ public class AdapterMainBottom extends PagerAdapter {
                     break;
                 }
                 ((TextView) layout.findViewById(R.id.tvAverage)).setText(avr + "%");
+                ConstraintLayout.LayoutParams lp2 = (ConstraintLayout.LayoutParams) layout.findViewById(R.id.viewTransparent).getLayoutParams();
+                lp2.matchConstraintPercentWidth = ((float) avr)/100;
+                layout.findViewById(R.id.viewTransparent).setLayoutParams(lp2);
                 ArrayList<Integer> arr = null;
                 if(position == 0) arr= HistoryManager.getHistoryTrain();
                 if(position == 1) arr= HistoryManager.getHistoryTest();
@@ -73,6 +85,33 @@ public class AdapterMainBottom extends PagerAdapter {
                 });
                 if(position == 1){
                     layout.findViewById(R.id.viewTransparent).setBackgroundColor(mContext.getColor(R.color.testAccent));
+                }
+                break;
+            case 2:
+                layout = (ViewGroup) inflater.inflate(R.layout.widget_main_list, collection, false);
+                ArrayList<String> prods = HistoryManager.getHistoryCollection();
+                for(String s : prods){
+                    Product p = ProductsManager.encodeProduct(s);
+                    View item = View.inflate(new ContextThemeWrapper(mActivity,p.getTheme().theme),R.layout.widget_product, null);
+                    ((TextView) item.findViewWithTag("text")).setText("\"" + p.getTitle() +
+                            "\" - " + p.getAuthorName());
+
+                    ((LinearLayout) layout.findViewById(R.id.llList)).addView(item, 0);
+                    LinearLayout.LayoutParams layoutParams = ((LinearLayout.LayoutParams) item.getLayoutParams());
+//                    layoutParams.weight = 1;
+                    layoutParams.bottomMargin = 20;
+                    item.setLayoutParams(layoutParams);
+                    item.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            HistoryManager.openProduct(s);
+
+                            Intent i = new Intent(mActivity, InProducts.class);
+                            i.putExtra("code", s);
+                            mActivity.startActivity(i);
+                        }
+                    });
                 }
                 break;
             default:

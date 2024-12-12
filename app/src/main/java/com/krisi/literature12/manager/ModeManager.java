@@ -26,11 +26,7 @@ public class ModeManager {
         wrongAnswers = 0;
         correctCount = 0;
         for(int i = 0; i < products.size(); i++){
-            String[] tags = ((String) products.get(i)).split(" ");
-            ProductTheme theme = ProductTheme.valueOf(tags[0]);
-            int id = Integer.parseInt(tags[1]);
-//            correctProducts.add(ProductsManager.getProduct(theme, id));
-            allProducts.add(ProductsManager.getProduct(theme, id));
+            allProducts.add(ProductsManager.encodeProduct(products.get(i)));
         }
     }
 

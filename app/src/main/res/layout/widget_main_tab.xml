@@ -16,6 +16,7 @@
         android:tag="question"
         android:text="@string/mode_train"
         android:textSize="24sp"
+        android:textFontWeight="600"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

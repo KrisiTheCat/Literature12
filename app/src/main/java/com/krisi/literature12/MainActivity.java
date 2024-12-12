@@ -56,16 +56,11 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.round_edges_gradient_collection,
                 R.string.mode_collection,
                 R.string.mode_collection_descr));
-        models.add(new Model(
-                R.drawable.icon_favourites,
-                R.drawable.round_edges_gradient_fav,
-                R.string.mode_favourites,
-                R.string.mode_favourites_descr));
 
-        adapter = new AdapterMainTop(models, this);
+        adapter = new AdapterMainTop(models, this, MainActivity.this);
 
         ViewPager viewPagerContent  = findViewById(R.id.vpContent);
-        viewPagerContent.setAdapter(new AdapterMainBottom(this));
+        viewPagerContent.setAdapter(new AdapterMainBottom(this, MainActivity.this));
         viewPagerContent.setOffscreenPageLimit(4);
 
         viewPager = findViewById(R.id.viewPager);
@@ -75,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Integer[] colors = {
                 getResources().getColor(R.color.trainingLight),
                 getResources().getColor(R.color.testLight),
-                getResources().getColor(R.color.collectionLight),
-                getResources().getColor(R.color.favouritesLight)
+                getResources().getColor(R.color.collectionLight)
         };
 
 
@@ -114,29 +108,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void openTraining(View view){
-        Intent in = new Intent(MainActivity.this, ModeSettings.class);
-        in.putExtra("mode", SpecificMode.TRAIN);
-        startActivity(in);
-    }
-
-    public void openTest(View view){
-        Intent in = new Intent(MainActivity.this, ModeSettings.class);
-        in.putExtra("mode", SpecificMode.TEST);
-        startActivity(in);
-    }
-    public void openCollection(View view){
-        Intent in = new Intent(MainActivity.this, Collection.class);
-        startActivity(in);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
 
+        ViewPager viewPager  = findViewById(R.id.viewPager);
         ViewPager viewPagerContent  = findViewById(R.id.vpContent);
-        viewPagerContent.setAdapter(new AdapterMainBottom(this));
-        viewPagerContent.setOffscreenPageLimit(4);
+        viewPagerContent.setAdapter(new AdapterMainBottom(this, MainActivity.this));
+        viewPagerContent.setOffscreenPageLimit(3);
+        viewPagerContent.setCurrentItem(viewPager.getCurrentItem());
     }
 }
 

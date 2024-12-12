@@ -118,8 +118,8 @@ public class ModeSettings extends AppCompatActivity {
                     view.setId(View.generateViewId());
                     ((TextView) view.findViewWithTag("text")).setText(product.getTitle());
                     view.setOnClickListener(onClickListener);
-                    view.setTag(theme+" "+i);
-                    productsUsed.add(theme+" "+i);
+                    view.setTag(ProductsManager.decodeProduct(theme, i));
+                    productsUsed.add(ProductsManager.decodeProduct(theme, i));
                     layout.addView(view);
                 }
             }
@@ -148,7 +148,7 @@ public class ModeSettings extends AppCompatActivity {
                     in.putExtra("mode", SpecificMode.TEST_DO);
                 }
                 startActivity(in);
-                finish();
+                ModeSettings.this.finish();
             }
         });
 

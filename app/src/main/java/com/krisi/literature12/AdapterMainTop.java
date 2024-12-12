@@ -1,9 +1,12 @@
 package com.krisi.literature12;
 
+import android.app.Activity;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +20,12 @@ public class AdapterMainTop extends PagerAdapter {
     private List<Model> models;
     private LayoutInflater layoutInflater;
     private Context context;
+    private Activity activity;
 
-    public AdapterMainTop(List<Model> models, Context context) {
+    public AdapterMainTop(List<Model> models, Context context, Activity activity) {
         this.models = models;
         this.context = context;
+        this.activity = activity;
     }
 
     @Override
@@ -49,6 +54,21 @@ public class AdapterMainTop extends PagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent in = null;
+                switch (position){
+                    case 0:
+                        in = new Intent(activity, ModeSettings.class);
+                        in.putExtra("mode", SpecificMode.TRAIN);
+                        break;
+                    case 1:
+                        in = new Intent(activity, ModeSettings.class);
+                        in.putExtra("mode", SpecificMode.TEST);
+                        break;
+                    case 2:
+                        in = new Intent(activity, ModeCollection.class);
+                        break;
+                }
+                activity.startActivity(in);
 //                Intent intent = new Intent(context, DetailActivity.class);
 //                intent.putExtra("param", models.get(position).getTitle());
 //                context.startActivity(intent);

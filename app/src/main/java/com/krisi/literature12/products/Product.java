@@ -1,5 +1,9 @@
 package com.krisi.literature12.products;
 
+import android.util.Pair;
+
+import java.util.ArrayList;
+
 public class Product {
     private String title;
     private String authorName;
@@ -7,6 +11,8 @@ public class Product {
     private ProductStyle style;
     private ProductTheme theme;
     private String text;
+    private String resume = null;
+    private ArrayList<Pair<Integer, String>> chapters;
 
     public String getTitle() {
         return title;
@@ -34,6 +40,14 @@ public class Product {
 
     public void setTheme(ProductTheme theme) {
         this.theme = theme;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public ArrayList<Pair<Integer, String>> getChapters() {
+        return chapters;
     }
 
     @Override

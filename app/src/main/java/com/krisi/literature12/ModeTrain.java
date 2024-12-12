@@ -20,6 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.krisi.literature12.animation.AnimationFactory;
 import com.krisi.literature12.products.Product;
 
@@ -86,6 +87,12 @@ public class ModeTrain extends AppCompatActivity {
                 initCardsProgress();
             }
         });
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initCardsProgress();
     }
 
@@ -106,26 +113,29 @@ public class ModeTrain extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                ConstraintLayout clTags = (ConstraintLayout) findViewById(R.id.clTags);
-                while(clTags.getChildCount() != 1) clTags.removeViewAt(1);
 
                 ((TextView) findViewById(R.id.tvQuote)).setText(card.first);
                 ((TextView) findViewById(R.id.tvTitle)).setText(card.second.getTitle());
                 ((TextView) findViewById(R.id.tvAuthor)).setText(card.second.getAuthorName());
 
                 View view = null;
-                ConstraintLayout layout = findViewById(R.id.clTags);
+                FlexboxLayout layout = findViewById(R.id.fbTags);
+                layout.removeAllViews();
 
-                ConstraintSet set = new ConstraintSet();
-
-                for(int i = 0; i < 2; i++) {
-                    if(i==0){
-                        view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), R.layout.widget_tag, null);
-                        view.setId(R.id.tvStyle);
-                    }
-                    if(i==1){
-                        view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getGenre().theme), R.layout.widget_tag, null);
-                        view.setId(R.id.tvGenre);
+                for(int i = 0; i < 4; i++) {
+                    switch (i){
+                        case 0:
+                            view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().theme), R.layout.widget_tag, null);
+                            break;
+                        case 1:
+                            view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getGenre().theme), R.layout.widget_tag, null);
+                            break;
+                        case 2:
+                            view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getStyle().theme), R.layout.widget_tag, null);
+                            break;
+                        case 3:
+                            view = View.inflate(new ContextThemeWrapper(ModeTrain.this, card.second.getTheme().gradeTheme), R.layout.widget_tag, null);
+                            break;
                     }
                     layout.addView(view);
                 }

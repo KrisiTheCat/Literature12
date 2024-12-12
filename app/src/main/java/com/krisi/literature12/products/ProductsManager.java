@@ -70,4 +70,14 @@ public class ProductsManager {
         if(!products.containsKey(theme)) return null;
         return products.get(theme).get(id);
     }
+
+    public static String decodeProduct(ProductTheme theme, int id){
+        return theme+" "+id;
+    }
+    public static Product encodeProduct(String code){
+        String[] tags = code.split(" ");
+        ProductTheme theme = ProductTheme.valueOf(tags[0]);
+        int id = Integer.parseInt(tags[1]);
+        return products.get(theme).get(id);
+    }
 }

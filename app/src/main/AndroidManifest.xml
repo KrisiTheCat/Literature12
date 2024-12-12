@@ -28,7 +28,7 @@
             android:name=".ProductPage"
             android:exported="false" />
         <activity
-            android:name=".Collection"
+            android:name=".ModeCollection"
             android:exported="false" />
         <activity
             android:name=".ModeTrain"

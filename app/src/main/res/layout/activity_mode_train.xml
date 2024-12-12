@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/btnBack"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
@@ -165,53 +165,20 @@
                 android:gravity="center"
                 android:text="TextView"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/clTags"
+                app:layout_constraintBottom_toTopOf="@+id/fbTags"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clTags"
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fbTags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <androidx.constraintlayout.helper.widget.Flow
-                    android:id="@+id/flow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:constraint_referenced_ids="tvStyle,tvGenre"
-                    app:flow_horizontalGap="10dp"
-                    app:flow_maxElementsWrap="3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_edges_big"
-                    android:backgroundTint="@color/pastel_yellow"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:text="@string/style_SYMBOLISM" />
-
-
-                <TextView
-                    android:id="@+id/tvGenre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_edges_big"
-                    android:backgroundTint="@color/pastel_blue"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:text="елегия" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintStart_toStartOf="parent"
+                app:dividerDrawable="@drawable/divider"
+                app:flexWrap="wrap"
+                app:justifyContent="center"
+                app:showDivider="middle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
